@@ -1,0 +1,1742 @@
+{
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": null,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "id": "1",
+          "type": "frser-sqlite-datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Project"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 297
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "NetInsertions"
+            }
+          ]
+        },
+        "pluginVersion": "13.0.1",
+        "targets": [
+          {
+            "datasource": {
+              "id": "1",
+              "type": "frser-sqlite-datasource"
+            },
+            "queryText": "{{.ProjectDeltasQuery}}",
+            "queryType": "table",
+            "rawQueryText": "{{.ProjectDeltasQuery}}",
+            "refId": "A",
+            "timeColumns": [
+              "time",
+              "ts"
+            ]
+          }
+        ],
+        "title": "Project Deltas",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "id": "1",
+          "type": "frser-sqlite-datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "id": 3,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 1,
+          "colorByField": "Project",
+          "fullHighlight": true,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "right",
+            "showLegend": false
+          },
+          "orientation": "horizontal",
+          "showValue": "auto",
+          "stacking": "none",
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          },
+          "xField": "Project",
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 0
+        },
+        "pluginVersion": "13.0.1",
+        "targets": [
+          {
+            "queryText": "{{.LinesChangedByProjectQuery}}",
+            "queryType": "table",
+            "rawQueryText": "{{.LinesChangedByProjectQuery}}",
+            "refId": "A",
+            "timeColumns": [
+              "time",
+              "ts"
+            ]
+          }
+        ],
+        "title": "Lines Changed By Project",
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "TotalDeltas": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "MergeBase": {
+                  "aggregations": []
+                },
+                "Project": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "UpstreamBranch": {
+                  "aggregations": []
+                }
+              }
+            }
+          }
+        ],
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "id": "1",
+          "type": "frser-sqlite-datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Project"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 299
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Path"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 555
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "NetInsertions"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 180
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "NetDeletions"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 167
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "TotalDeltas"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 177
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        },
+        "id": 4,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "TotalDeltas"
+            }
+          ]
+        },
+        "pluginVersion": "13.0.1",
+        "targets": [
+          {
+            "queryText": "{{.FileDeltasQuery}}",
+            "queryType": "table",
+            "rawQueryText": "{{.FileDeltasQuery}}",
+            "refId": "A",
+            "timeColumns": [
+              "time",
+              "ts"
+            ]
+          }
+        ],
+        "title": "File Deltas",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "id": "1",
+          "type": "frser-sqlite-datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 17
+        },
+        "id": 2,
+        "options": {
+          "legend": {
+            "calcs": [
+              "max"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true,
+            "sortBy": "Max",
+            "sortDesc": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "13.0.1",
+        "targets": [
+          {
+            "datasource": {
+              "id": "1",
+              "type": "frser-sqlite-datasource"
+            },
+            "queryText": "{{.LinesChangedOverTimeQuery}}",
+            "queryType": "table",
+            "rawQueryText": "{{.LinesChangedOverTimeQuery}}",
+            "refId": "A",
+            "timeColumns": [
+              "time",
+              "ts"
+            ]
+          }
+        ],
+        "title": "Lines Changed Over Time",
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "TotalDeltas": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "Project": {
+                  "aggregations": [
+                    "last"
+                  ],
+                  "operation": "groupby"
+                },
+                "time": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "filter": {
+              "id": "byRefId",
+              "options": ""
+            },
+            "id": "prepareTimeSeries",
+            "options": {
+              "format": "multi"
+            }
+          }
+        ],
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "id": "1",
+          "type": "frser-sqlite-datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CommitType"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "0": {
+                          "index": 0,
+                          "text": "UNSET"
+                        },
+                        "1": {
+                          "index": 1,
+                          "text": "MERGE"
+                        },
+                        "2": {
+                          "index": 2,
+                          "text": "REVERT"
+                        },
+                        "3": {
+                          "index": 3,
+                          "text": "STANDARD"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 118
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "IsFirstParent"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "0": {
+                          "index": 0,
+                          "text": "false"
+                        },
+                        "1": {
+                          "index": 1,
+                          "text": "true"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 110
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "NetFilesChanged"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "FilesChanged"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "NetInsertions"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Insertions"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "NetDeletions"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Deletions"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ResidentTimeRaw"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CommitSha1"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "(.{7,7}).*",
+                        "result": {
+                          "index": 0,
+                          "text": "$1"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 123
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "MergeBase"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "(.{7,7}).*",
+                        "result": {
+                          "index": 0,
+                          "text": "$1"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 116
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ChangeID"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "(.{7,7}).*",
+                        "result": {
+                          "index": 0,
+                          "text": "$1"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 108
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Subject"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 220
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Project"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 277
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Deletions"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 99
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Insertions"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 108
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "FilesChanged"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 118
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 25
+        },
+        "id": 5,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "ResidentTime"
+            }
+          ]
+        },
+        "pluginVersion": "13.0.1",
+        "targets": [
+          {
+            "queryText": "{{.BranchAwareCommitStatsQuery}}",
+            "queryType": "table",
+            "rawQueryText": "{{.BranchAwareCommitStatsQuery}}",
+            "refId": "A",
+            "timeColumns": [
+              "time",
+              "ts"
+            ]
+          }
+        ],
+        "title": "Branch Aware Commit Stats",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "ResidentTime",
+              "binary": {
+                "left": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "ResidentTimeRaw"
+                  }
+                },
+                "operator": "*",
+                "right": {
+                  "fixed": "1000"
+                }
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              },
+              "replaceFields": false
+            }
+          },
+          {
+            "id": "convertFieldType",
+            "options": {
+              "conversions": [
+                {
+                  "destinationType": "time",
+                  "enumConfig": {
+                    "text": [
+                      "baz",
+                      "bar",
+                      "foo"
+                    ]
+                  },
+                  "targetField": "ResidentTime"
+                }
+              ],
+              "fields": {}
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "id": "1",
+          "type": "frser-sqlite-datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "NetInsertions"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Insertions"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "NetDeletions"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Deletions"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ResidentTimeRaw"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CommitSha1"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "(.{7,7}).*",
+                        "result": {
+                          "index": 0,
+                          "text": "$1"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 112
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "MergeBase"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "(.{7,7}).*",
+                        "result": {
+                          "index": 0,
+                          "text": "$1"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 118
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Project"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 265
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Path"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 295
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Insertions"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 112
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Deletions"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 96
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 33
+        },
+        "id": 6,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "ResidentTime"
+            }
+          ]
+        },
+        "pluginVersion": "13.0.1",
+        "targets": [
+          {
+            "queryText": "{{.BranchAwareFileStatsQuery}}",
+            "queryType": "table",
+            "rawQueryText": "{{.BranchAwareFileStatsQuery}}",
+            "refId": "A",
+            "timeColumns": [
+              "time",
+              "ts"
+            ]
+          }
+        ],
+        "title": "Branch Aware File Stats",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "ResidentTime",
+              "binary": {
+                "left": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "ResidentTimeRaw"
+                  }
+                },
+                "operator": "*",
+                "right": {
+                  "fixed": "1000"
+                }
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "convertFieldType",
+            "options": {
+              "conversions": [
+                {
+                  "destinationType": "time",
+                  "enumConfig": {
+                    "text": [
+                      "baz",
+                      "bar",
+                      "foo"
+                    ]
+                  },
+                  "targetField": "ResidentTime"
+                }
+              ],
+              "fields": {}
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 16,
+          "x": 0,
+          "y": 42
+        },
+        "id": 9,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "# Branch Agnostic Stats\nAny given commit may be reachable from multiple branches. It may be reachable along a first-parent chain, or through a set of merges. However, there are associated properties independent of first-parent chains and independent of relative change compared to another branch. Examples of these properties are:\n\n* Git Host, Project, Commit SHA\n* Commit Type (merge, revert, standard)\n* Commit Author, Commit Time\n* Files Changed, Insertions, Deletions\n\nIn this context, Files Changed, Insertions, and Deletions are properties of the commit itself, as one can find in git show. This information in isolation does not indicate whether a downstream branch diverges or converges to an upstream branch. Similarly, each file modified as part of a commit has branch agnostic information, such as Insertions and Deletions made to the file.",
+          "mode": "markdown"
+        },
+        "pluginVersion": "13.0.1",
+        "title": "",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "id": "1",
+          "type": "frser-sqlite-datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CommitType"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "0": {
+                          "index": 0,
+                          "text": "UNSET"
+                        },
+                        "1": {
+                          "index": 1,
+                          "text": "MERGE"
+                        },
+                        "2": {
+                          "index": 2,
+                          "text": "REVERT"
+                        },
+                        "3": {
+                          "index": 3,
+                          "text": "STANDARD"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 98
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CommitSha1"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "(.{7,7}).*",
+                        "result": {
+                          "index": 0,
+                          "text": "$1"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 104
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "ChangeID"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "(.{7,7}).*",
+                        "result": {
+                          "index": 0,
+                          "text": "$1"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 98
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CommitTimeRaw"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Subject"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 213
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Insertions"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 123
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Deletions"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 114
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 51
+        },
+        "id": 7,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "CommitTime"
+            }
+          ]
+        },
+        "pluginVersion": "13.0.1",
+        "targets": [
+          {
+            "queryText": "{{.BranchAgnosticCommitStatsQuery}}",
+            "queryType": "table",
+            "rawQueryText": "{{.BranchAgnosticCommitStatsQuery}}",
+            "refId": "A",
+            "timeColumns": [
+              "time",
+              "ts"
+            ]
+          }
+        ],
+        "title": "Branch Agnostic Commit Stats",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "CommitTime",
+              "binary": {
+                "left": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "CommitTimeRaw"
+                  }
+                },
+                "operator": "*",
+                "right": {
+                  "fixed": "1000"
+                }
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "convertFieldType",
+            "options": {
+              "conversions": [
+                {
+                  "destinationType": "time",
+                  "targetField": "CommitTime"
+                }
+              ],
+              "fields": {}
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "id": "1",
+          "type": "frser-sqlite-datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CommitSha1"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "(.{7,7}).*",
+                        "result": {
+                          "index": 0,
+                          "text": "$1"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                },
+                {
+                  "id": "custom.width",
+                  "value": 118
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Subject"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 270
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "CommitTimeRaw"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 59
+        },
+        "id": 8,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "CommitTime"
+            }
+          ]
+        },
+        "pluginVersion": "13.0.1",
+        "targets": [
+          {
+            "queryText": "{{.BranchAgnosticFileStatsQuery}}",
+            "queryType": "table",
+            "rawQueryText": "{{.BranchAgnosticFileStatsQuery}}",
+            "refId": "A",
+            "timeColumns": [
+              "time",
+              "ts"
+            ]
+          }
+        ],
+        "title": "Branch Agnostic File Stats",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "CommitTime",
+              "binary": {
+                "left": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "CommitTimeRaw"
+                  }
+                },
+                "operator": "*",
+                "right": {
+                  "fixed": "1000"
+                }
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "convertFieldType",
+            "options": {
+              "conversions": [
+                {
+                  "destinationType": "time",
+                  "targetField": "CommitTime"
+                }
+              ],
+              "fields": {}
+            }
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "preload": false,
+    "schemaVersion": 41,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "allValue": "\"ALL\"",
+          "allowCustomValue": false,
+          "current": {
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "definition": "SELECT DownstreamName FROM BranchCommits",
+          "includeAll": true,
+          "multi": true,
+          "name": "DownstreamName",
+          "options": [],
+          "query": "SELECT DownstreamName FROM BranchCommits",
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": "\"ALL\"",
+          "allowCustomValue": false,
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "definition": "SELECT DownstreamBranch FROM BranchCommits WHERE\n(\"ALL\" IN (${DownstreamName:sqlstring}) or DownstreamName IN (${DownstreamName:sqlstring}))",
+          "description": "",
+          "includeAll": true,
+          "multi": true,
+          "name": "DownstreamBranch",
+          "options": [],
+          "query": "SELECT DownstreamBranch FROM BranchCommits WHERE\n(\"ALL\" IN (${DownstreamName:sqlstring}) or DownstreamName IN (${DownstreamName:sqlstring}))",
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": "\"ALL\"",
+          "allowCustomValue": false,
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "definition": "SELECT UpstreamName FROM BranchCommits WHERE\n(\"ALL\" IN (${DownstreamName:sqlstring}) or DownstreamName IN (${DownstreamName:sqlstring})) AND\n(\"ALL\" IN (${DownstreamBranch:sqlstring}) or DownstreamBranch IN (${DownstreamBranch:sqlstring}))",
+          "description": "",
+          "includeAll": true,
+          "multi": true,
+          "name": "UpstreamName",
+          "options": [],
+          "query": "SELECT UpstreamName FROM BranchCommits WHERE\n(\"ALL\" IN (${DownstreamName:sqlstring}) or DownstreamName IN (${DownstreamName:sqlstring})) AND\n(\"ALL\" IN (${DownstreamBranch:sqlstring}) or DownstreamBranch IN (${DownstreamBranch:sqlstring}))",
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": "\"ALL\"",
+          "allowCustomValue": false,
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "definition": "SELECT UpstreamBranch FROM BranchCommits WHERE\n(\"ALL\" IN (${DownstreamName:sqlstring}) or DownstreamName IN (${DownstreamName:sqlstring})) AND\n(\"ALL\" IN (${DownstreamBranch:sqlstring}) or DownstreamBranch IN (${DownstreamBranch:sqlstring})) AND\n(\"ALL\" IN (${UpstreamName:sqlstring}) or UpstreamName IN (${UpstreamName:sqlstring}))",
+          "description": "",
+          "includeAll": true,
+          "multi": true,
+          "name": "UpstreamBranch",
+          "options": [],
+          "query": "SELECT UpstreamBranch FROM BranchCommits WHERE\n(\"ALL\" IN (${DownstreamName:sqlstring}) or DownstreamName IN (${DownstreamName:sqlstring})) AND\n(\"ALL\" IN (${DownstreamBranch:sqlstring}) or DownstreamBranch IN (${DownstreamBranch:sqlstring})) AND\n(\"ALL\" IN (${UpstreamName:sqlstring}) or UpstreamName IN (${UpstreamName:sqlstring}))",
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": "\"ALL\"",
+          "allowCustomValue": false,
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "id": "1",
+            "type": "frser-sqlite-datasource"
+          },
+          "definition": "SELECT Project FROM BranchCommits WHERE\n(\"ALL\" IN (${DownstreamName:sqlstring}) or DownstreamName IN (${DownstreamName:sqlstring})) AND\n(\"ALL\" IN (${DownstreamBranch:sqlstring}) or DownstreamBranch IN (${DownstreamBranch:sqlstring})) AND\n(\"ALL\" IN (${UpstreamName:sqlstring}) or UpstreamName IN (${UpstreamName:sqlstring})) AND\n(\"ALL\" IN (${UpstreamBranch:sqlstring}) or UpstreamBranch IN (${UpstreamBranch:sqlstring}))",
+          "description": "",
+          "includeAll": true,
+          "multi": true,
+          "name": "Project",
+          "options": [],
+          "query": "SELECT Project FROM BranchCommits WHERE\n(\"ALL\" IN (${DownstreamName:sqlstring}) or DownstreamName IN (${DownstreamName:sqlstring})) AND\n(\"ALL\" IN (${DownstreamBranch:sqlstring}) or DownstreamBranch IN (${DownstreamBranch:sqlstring})) AND\n(\"ALL\" IN (${UpstreamName:sqlstring}) or UpstreamName IN (${UpstreamName:sqlstring})) AND\n(\"ALL\" IN (${UpstreamBranch:sqlstring}) or UpstreamBranch IN (${UpstreamBranch:sqlstring}))",
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": "\"ALL\"",
+          "allowCustomValue": false,
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "definition": "SELECT Path FROM BranchFiles WHERE\n(\"ALL\" IN (${DownstreamName:sqlstring}) or DownstreamName IN (${DownstreamName:sqlstring})) AND\n(\"ALL\" IN (${DownstreamBranch:sqlstring}) or DownstreamBranch IN (${DownstreamBranch:sqlstring})) AND\n(\"ALL\" IN (${UpstreamName:sqlstring}) or UpstreamName IN (${UpstreamName:sqlstring})) AND\n(\"ALL\" IN (${UpstreamBranch:sqlstring}) or UpstreamBranch IN (${UpstreamBranch:sqlstring})) AND\n(\"ALL\" IN (${Project:sqlstring}) or Project IN (${Project:sqlstring}))",
+          "description": "",
+          "includeAll": true,
+          "multi": true,
+          "name": "Path",
+          "options": [],
+          "query": "SELECT Path FROM BranchFiles WHERE\n(\"ALL\" IN (${DownstreamName:sqlstring}) or DownstreamName IN (${DownstreamName:sqlstring})) AND\n(\"ALL\" IN (${DownstreamBranch:sqlstring}) or DownstreamBranch IN (${DownstreamBranch:sqlstring})) AND\n(\"ALL\" IN (${UpstreamName:sqlstring}) or UpstreamName IN (${UpstreamName:sqlstring})) AND\n(\"ALL\" IN (${UpstreamBranch:sqlstring}) or UpstreamBranch IN (${UpstreamBranch:sqlstring})) AND\n(\"ALL\" IN (${Project:sqlstring}) or Project IN (${Project:sqlstring}))",
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": "\"ALL\"",
+          "allowCustomValue": false,
+          "current": {
+            "text": "$__all",
+            "value": "$__all"
+          },
+          "includeAll": true,
+          "name": "FirstParent",
+          "options": [
+            {
+              "selected": false,
+              "text": "true",
+              "value": "true"
+            },
+            {
+              "selected": false,
+              "text": "false",
+              "value": "false"
+            }
+          ],
+          "query": "true, false",
+          "type": "custom"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-3y",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "Chisel",
+    "uid": "eekeamnd504jkc",
+    "version": 8
+  }
+}
